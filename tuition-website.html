@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Your Institute Name — Excellence in Education</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1A3A6B;
+  --blue2:#2554A0;
+  --blue3:#3A6AC8;
+  --blue-light:#EBF0FB;
+  --blue-pale:#F4F7FE;
+  --blue-border:rgba(26,58,107,0.15);
+  --accent:#F5A623;
+  --accent2:#FFBD50;
+  --white:#FFFFFF;
+  --grey1:#F7F8FA;
+  --grey2:#ECEEF2;
+  --grey3:#C8CDD8;
+  --grey4:#8F96A8;
+  --grey5:#4A5060;
+  --black:#181C24;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',sans-serif;
+}
+html,body{font-family:var(--sans);background:var(--white);color:var(--black);overflow-x:hidden;font-weight:300;scroll-behavior:smooth}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--blue-border)}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 4rem;height:62px;
+  background:rgba(255,255,255,0.97);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--grey2);
+  box-shadow:0 1px 16px rgba(26,58,107,0.06);
+  transition:background 0.3s;
+}
+.logo{
+  display:flex;align-items:center;gap:0.6rem;
+  font-family:var(--serif);font-size:1.1rem;font-weight:500;
+  color:var(--blue);cursor:pointer;
+}
+.logo-icon{
+  width:32px;height:32px;background:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  border-radius:6px;
+  font-size:0.7rem;color:var(--white);font-weight:600;letter-spacing:0.05em;font-family:var(--sans);
+}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links li a{
+  display:block;padding:0 1rem;height:62px;line-height:62px;
+  font-size:0.78rem;color:var(--grey4);text-decoration:none;
+  font-weight:400;transition:color 0.2s;letter-spacing:0.01em;position:relative;
+}
+.nav-links li a:hover{color:var(--blue)}
+.nav-links li a.active{color:var(--blue);font-weight:500}
+.nav-links li a.active::after{
+  content:'';position:absolute;bottom:0;left:1rem;right:1rem;
+  height:2px;background:var(--blue);border-radius:2px 2px 0 0;
+}
+.nav-cta{
+  font-size:0.75rem;font-weight:600;
+  padding:0.6rem 1.4rem;
+  background:var(--blue);color:var(--white);
+  border:none;cursor:pointer;font-family:var(--sans);
+  transition:background 0.2s;border-radius:6px;letter-spacing:0.02em;
+}
+.nav-cta:hover{background:var(--blue2)}
+
+/* PAGES */
+.page{display:none;padding-top:62px}
+.page.active{display:block}
+
+/* SCROLL ANIMATIONS */
+.reveal{
+  opacity:0;transform:translateY(32px);
+  transition:opacity 0.7s ease,transform 0.7s ease;
+}
+.reveal.from-left{transform:translateX(-32px)}
+.reveal.from-right{transform:translateX(32px)}
+.reveal.scale-in{transform:scale(0.95);opacity:0}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+.reveal-delay-5{transition-delay:0.5s}
+
+/* SHARED */
+.eyebrow{
+  font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--blue3);font-weight:600;margin-bottom:1rem;
+  display:flex;align-items:center;gap:0.75rem;
+}
+.eyebrow::before{content:'';width:20px;height:2px;background:var(--accent);display:inline-block;border-radius:2px}
+.section{padding:6rem 5rem}
+.section-alt{background:var(--grey1)}
+.section-blue{background:var(--blue)}
+.section-title{
+  font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);
+  font-weight:400;color:var(--black);line-height:1.2;margin-bottom:0.75rem;
+}
+.section-title em{font-style:italic;color:var(--blue)}
+.section-title.white{color:var(--white)}
+.section-title.white em{color:var(--accent2)}
+.section-sub{font-size:0.9rem;line-height:1.85;color:var(--grey4);max-width:560px}
+.section-sub.white{color:rgba(255,255,255,0.6)}
+.sec-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3.5rem;gap:2rem;flex-wrap:wrap}
+
+/* ─── HOME ─── */
+/* HERO */
+.hero{
+  min-height:calc(100vh - 62px);
+  display:grid;grid-template-columns:1.1fr 0.9fr;
+  background:var(--white);
+}
+.hero-left{
+  padding:5rem 5rem;display:flex;flex-direction:column;justify-content:center;
+  border-right:1px solid var(--grey2);position:relative;overflow:hidden;
+}
+.hero-left::before{
+  content:'';position:absolute;bottom:-100px;left:-100px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(26,58,107,0.04) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:var(--blue-light);border:1px solid var(--blue-border);
+  padding:0.4rem 1rem;border-radius:20px;
+  font-size:0.72rem;font-weight:500;color:var(--blue);
+  margin-bottom:1.75rem;letter-spacing:0.04em;
+}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%}
+h1.hero-title{
+  font-family:var(--serif);font-size:clamp(2.8rem,4.5vw,5rem);
+  font-weight:400;line-height:1.1;color:var(--black);margin-bottom:1.5rem;
+}
+h1.hero-title em{font-style:italic;color:var(--blue)}
+h1.hero-title span{color:var(--accent)}
+.hero-sub{font-size:0.95rem;line-height:1.9;color:var(--grey4);max-width:460px;margin-bottom:2.5rem}
+.btn-row{display:flex;gap:0.85rem;flex-wrap:wrap}
+.btn-blue{
+  padding:0.85rem 2rem;background:var(--blue);color:var(--white);
+  font-size:0.78rem;font-weight:600;font-family:var(--sans);
+  border:none;cursor:pointer;transition:all 0.25s;border-radius:6px;letter-spacing:0.02em;
+}
+.btn-blue:hover{background:var(--blue2);transform:translateY(-2px)}
+.btn-soft{
+  padding:0.85rem 2rem;background:transparent;color:var(--grey5);
+  font-size:0.78rem;font-weight:400;font-family:var(--sans);
+  border:1px solid var(--grey2);cursor:pointer;transition:all 0.2s;border-radius:6px;
+}
+.btn-soft:hover{border-color:var(--blue);color:var(--blue)}
+.trust-row{
+  margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--grey2);
+  display:flex;gap:2rem;flex-wrap:wrap;
+}
+.trust-item{display:flex;align-items:center;gap:0.55rem}
+.trust-dot{width:5px;height:5px;background:var(--accent);border-radius:50%}
+.trust-text{font-size:0.75rem;color:var(--grey4)}
+
+/* HERO RIGHT */
+.hero-right{
+  background:var(--blue);display:flex;flex-direction:column;
+  padding:4rem 3.5rem;justify-content:center;gap:1.25rem;
+  position:relative;overflow:hidden;
+}
+.hero-right::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:320px;height:320px;border-radius:50%;
+  background:rgba(255,255,255,0.04);pointer-events:none;
+}
+.hero-right::after{
+  content:'';position:absolute;bottom:-60px;left:-60px;
+  width:250px;height:250px;border-radius:50%;
+  background:rgba(245,166,35,0.08);pointer-events:none;
+}
+.hero-card{
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);
+  border-radius:10px;padding:1.5rem;position:relative;z-index:1;
+  transition:background 0.2s;
+}
+.hero-card:hover{background:rgba(255,255,255,0.1)}
+.hc-top{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem}
+.hc-icon{
+  width:36px;height:36px;border-radius:8px;background:rgba(245,166,35,0.2);
+  display:flex;align-items:center;justify-content:center;
+}
+.hc-icon svg{width:18px;height:18px;stroke:var(--accent2);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.hc-title{font-size:0.88rem;font-weight:600;color:var(--white)}
+.hc-sub{font-size:0.75rem;color:rgba(255,255,255,0.5)}
+.hc-tag{
+  font-size:0.65rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--accent);background:rgba(245,166,35,0.15);
+  padding:0.2rem 0.6rem;border-radius:4px;margin-left:auto;flex-shrink:0;
+}
+.hc-desc{font-size:0.77rem;color:rgba(255,255,255,0.55);line-height:1.65}
+
+/* STATS STRIP */
+.stats-strip{
+  background:var(--blue-light);border-top:1px solid var(--blue-border);border-bottom:1px solid var(--blue-border);
+  padding:2.5rem 5rem;display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;
+}
+.stat-box{
+  text-align:center;padding:0 2rem;border-right:1px solid var(--blue-border);
+}
+.stat-box:last-child{border-right:none}
+.stat-n{
+  font-family:var(--serif);font-size:2.8rem;font-weight:400;
+  color:var(--blue);line-height:1;margin-bottom:0.35rem;
+}
+.stat-n em{font-style:italic;color:var(--accent)}
+.stat-l{font-size:0.75rem;color:var(--grey4);letter-spacing:0.04em}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.feat-card{
+  background:var(--white);border:1px solid var(--grey2);border-radius:12px;
+  padding:2rem;transition:all 0.3s;position:relative;overflow:hidden;
+}
+.feat-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--blue),var(--blue3));
+  transform:scaleX(0);transform-origin:left;transition:transform 0.4s;
+}
+.feat-card:hover{border-color:var(--blue-border);box-shadow:0 8px 32px rgba(26,58,107,0.08);transform:translateY(-4px)}
+.feat-card:hover::before{transform:scaleX(1)}
+.feat-icon{
+  width:48px;height:48px;border-radius:10px;background:var(--blue-light);
+  display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;
+}
+.feat-icon svg{width:22px;height:22px;stroke:var(--blue);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.feat-name{font-size:0.95rem;font-weight:600;color:var(--black);margin-bottom:0.5rem}
+.feat-desc{font-size:0.8rem;line-height:1.75;color:var(--grey4)}
+
+/* ─── COURSES ─── */
+.courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.course-card{
+  background:var(--white);border:1px solid var(--grey2);border-radius:12px;
+  overflow:hidden;transition:all 0.3s;
+}
+.course-card:hover{box-shadow:0 8px 32px rgba(26,58,107,0.1);transform:translateY(-4px)}
+.course-top{
+  background:var(--blue);padding:2rem;position:relative;overflow:hidden;
+}
+.course-top::after{
+  content:'';position:absolute;bottom:-30px;right:-30px;
+  width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,0.06);
+}
+.course-label{
+  font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;
+  color:rgba(255,255,255,0.5);margin-bottom:0.5rem;font-weight:500;
+}
+.course-name{font-family:var(--serif);font-size:1.3rem;font-weight:400;color:var(--white);margin-bottom:0.35rem}
+.course-grade{font-size:0.78rem;color:rgba(255,255,255,0.55)}
+.course-tag{
+  display:inline-block;margin-top:1rem;
+  font-size:0.65rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+  background:rgba(245,166,35,0.2);color:var(--accent2);
+  padding:0.25rem 0.75rem;border-radius:20px;
+}
+.course-body{padding:1.5rem}
+.course-subjects{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.25rem}
+.subj{
+  font-size:0.7rem;padding:0.25rem 0.65rem;
+  background:var(--blue-light);color:var(--blue);border-radius:4px;font-weight:500;
+}
+.course-meta{display:flex;justify-content:space-between;align-items:center;font-size:0.78rem}
+.course-meta-item{display:flex;align-items:center;gap:0.35rem;color:var(--grey4)}
+.course-meta-item svg{width:13px;height:13px;stroke:var(--grey3);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.course-fee{font-weight:600;color:var(--blue);font-size:0.82rem}
+
+/* FEE TABLE */
+.fee-table-wrap{margin-top:3rem}
+.fee-table-title{font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--black);margin-bottom:1.5rem}
+.fee-table-title em{font-style:italic;color:var(--blue)}
+table.fee-table{width:100%;border-collapse:collapse;font-size:0.83rem}
+.fee-table th{
+  text-align:left;padding:0.85rem 1.25rem;
+  background:var(--blue);color:rgba(255,255,255,0.7);
+  font-weight:500;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;
+}
+.fee-table th:first-child{border-radius:8px 0 0 0}
+.fee-table th:last-child{border-radius:0 8px 0 0}
+.fee-table td{
+  padding:0.9rem 1.25rem;border-bottom:1px solid var(--grey2);
+  color:var(--grey5);vertical-align:middle;
+}
+.fee-table tr:hover td{background:var(--blue-pale)}
+.fee-table tr:last-child td{border-bottom:none}
+.fee-table td:first-child{font-weight:500;color:var(--black)}
+.fee-badge{
+  display:inline-block;font-size:0.65rem;font-weight:600;
+  padding:0.2rem 0.6rem;border-radius:4px;letter-spacing:0.05em;
+}
+.fee-badge.popular{background:rgba(245,166,35,0.15);color:var(--accent)}
+.fee-badge.new{background:var(--blue-light);color:var(--blue)}
+
+/* ─── RESULTS ─── */
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:3rem}
+.result-card{
+  background:var(--white);border:1px solid var(--grey2);border-radius:12px;
+  padding:1.75rem;text-align:center;transition:all 0.3s;
+}
+.result-card:hover{box-shadow:0 8px 24px rgba(26,58,107,0.08);border-color:var(--blue-border)}
+.result-rank{
+  font-family:var(--serif);font-size:2.5rem;font-weight:400;
+  color:var(--blue);line-height:1;margin-bottom:0.25rem;
+}
+.result-rank em{font-style:italic;color:var(--accent)}
+.result-exam{font-size:0.68rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey3);margin-bottom:0.75rem}
+.result-name{font-size:0.88rem;font-weight:600;color:var(--black);margin-bottom:0.2rem}
+.result-batch{font-size:0.72rem;color:var(--grey4)}
+
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.testi{
+  background:var(--white);border:1px solid var(--grey2);border-radius:12px;
+  padding:2rem;transition:all 0.3s;
+}
+.testi:hover{box-shadow:0 6px 24px rgba(26,58,107,0.07);border-color:var(--blue-border)}
+.testi-stars{display:flex;gap:3px;margin-bottom:1rem}
+.star{width:13px;height:13px;background:var(--accent);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.testi-text{font-size:0.83rem;line-height:1.8;color:var(--grey5);font-style:italic;margin-bottom:1.5rem;border-left:3px solid var(--blue-light);padding-left:1rem}
+.testi-author{display:flex;align-items:center;gap:0.75rem}
+.testi-av{
+  width:36px;height:36px;border-radius:50%;background:var(--blue-light);
+  border:1px solid var(--blue-border);display:flex;align-items:center;justify-content:center;
+  font-size:0.72rem;font-weight:600;color:var(--blue);
+}
+.testi-name{font-size:0.82rem;font-weight:600;color:var(--black)}
+.testi-role{font-size:0.7rem;color:var(--grey4);margin-top:0.1rem}
+
+/* ─── FACULTY ─── */
+.faculty-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+.faculty-card{
+  background:var(--white);border:1px solid var(--grey2);border-radius:12px;
+  overflow:hidden;transition:all 0.3s;
+}
+.faculty-card:hover{box-shadow:0 8px 28px rgba(26,58,107,0.1);transform:translateY(-4px)}
+.faculty-top{
+  background:var(--blue-light);padding:2rem;text-align:center;
+  border-bottom:1px solid var(--blue-border);
+}
+.faculty-av{
+  width:64px;height:64px;border-radius:50%;
+  background:var(--blue);border:3px solid var(--white);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--white);
+  margin:0 auto 0.75rem;
+}
+.faculty-name{font-size:0.9rem;font-weight:600;color:var(--black);margin-bottom:0.2rem}
+.faculty-subject{font-size:0.72rem;color:var(--blue3);font-weight:500}
+.faculty-body{padding:1.25rem}
+.faculty-exp{font-size:0.8rem;font-weight:600;color:var(--accent);margin-bottom:0.35rem}
+.faculty-desc{font-size:0.74rem;line-height:1.65;color:var(--grey4)}
+.faculty-qual{
+  margin-top:0.75rem;font-size:0.68rem;font-weight:500;letter-spacing:0.04em;
+  color:var(--blue);background:var(--blue-light);
+  padding:0.25rem 0.6rem;border-radius:4px;display:inline-block;
+}
+
+/* ─── ADMISSION ─── */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.steps-grid::before{
+  content:'';position:absolute;top:2rem;left:12.5%;right:12.5%;
+  height:2px;background:var(--grey2);z-index:0;
+}
+.step-item{text-align:center;padding:0 1.5rem;position:relative;z-index:1}
+.step-dot{
+  width:4rem;height:4rem;border-radius:50%;
+  background:var(--white);border:2px solid var(--blue-border);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.5rem;font-size:1rem;font-weight:600;
+  color:var(--blue);position:relative;z-index:1;
+  font-family:var(--serif);transition:all 0.3s;
+}
+.step-item:hover .step-dot{background:var(--blue);color:var(--white);border-color:var(--blue)}
+.step-name{font-size:0.88rem;font-weight:600;color:var(--black);margin-bottom:0.4rem}
+.step-desc{font-size:0.76rem;line-height:1.65;color:var(--grey4)}
+
+.faq-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--grey2);border-radius:12px;overflow:hidden;margin-top:3rem}
+.faq-item{border-bottom:1px solid var(--grey2)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{
+  padding:1.25rem 1.5rem;font-size:0.88rem;font-weight:500;color:var(--black);
+  cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+  transition:background 0.2s;user-select:none;
+}
+.faq-q:hover{background:var(--blue-pale)}
+.faq-q.open{color:var(--blue);background:var(--blue-pale)}
+.faq-arrow{font-size:1rem;color:var(--grey3);transition:transform 0.3s}
+.faq-q.open .faq-arrow{transform:rotate(45deg);color:var(--blue)}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height 0.4s ease,padding 0.3s;
+  font-size:0.82rem;line-height:1.8;color:var(--grey4);
+  padding:0 1.5rem;
+}
+.faq-a.open{max-height:200px;padding:0.75rem 1.5rem 1.25rem}
+
+/* ─── CONTACT ─── */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 62px)}
+.contact-left{
+  background:var(--blue);padding:5rem;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.contact-left::before{
+  content:'';position:absolute;bottom:-100px;right:-100px;
+  width:400px;height:400px;border-radius:50%;
+  background:rgba(255,255,255,0.04);pointer-events:none;
+}
+.contact-left .eyebrow{color:rgba(255,255,255,0.5)}
+.contact-left .eyebrow::before{background:var(--accent)}
+.contact-left h2{
+  font-family:var(--serif);font-size:clamp(2rem,3vw,3rem);
+  font-weight:400;color:var(--white);line-height:1.2;margin-bottom:1rem;position:relative;z-index:1;
+}
+.contact-left h2 em{font-style:italic;opacity:0.65}
+.contact-left p{font-size:0.88rem;line-height:1.85;color:rgba(255,255,255,0.55);margin-bottom:2.5rem;max-width:380px;position:relative;z-index:1}
+.c-cards{display:flex;flex-direction:column;gap:0.75rem;position:relative;z-index:1}
+.c-card{
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);
+  padding:1rem 1.4rem;display:flex;align-items:center;gap:1rem;transition:background 0.2s;border-radius:8px;
+}
+.c-card:hover{background:rgba(255,255,255,0.1)}
+.c-icon{
+  width:36px;height:36px;border-radius:8px;
+  background:rgba(245,166,35,0.2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.c-icon svg{width:16px;height:16px;stroke:var(--accent2);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.c-label{font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.15rem}
+.c-val{font-size:0.82rem;color:var(--white)}
+.contact-right{background:var(--white);padding:5rem;display:flex;flex-direction:column;justify-content:center}
+.form-title{font-family:var(--serif);font-size:1.7rem;font-weight:400;color:var(--black);margin-bottom:0.4rem}
+.form-sub{font-size:0.82rem;color:var(--grey4);margin-bottom:2rem;line-height:1.65}
+.form-group{margin-bottom:1.1rem}
+.form-group label{display:block;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey3);margin-bottom:0.4rem;font-weight:500}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;padding:0.75rem 1rem;
+  border:1.5px solid var(--grey2);background:var(--grey1);
+  font-family:var(--sans);font-size:0.84rem;color:var(--black);
+  outline:none;transition:border-color 0.2s;font-weight:300;border-radius:8px;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);background:var(--white)}
+.form-group textarea{resize:vertical;min-height:90px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.btn-submit{
+  width:100%;padding:0.9rem;background:var(--blue);color:var(--white);
+  font-size:0.8rem;font-weight:600;font-family:var(--sans);
+  border:none;cursor:pointer;transition:all 0.25s;
+  margin-top:0.5rem;border-radius:8px;letter-spacing:0.04em;
+}
+.btn-submit:hover{background:var(--blue2)}
+.form-note{font-size:0.71rem;color:var(--grey3);text-align:center;margin-top:0.75rem}
+
+/* FOOTER */
+.site-footer{
+  background:var(--black);padding:3.5rem 5rem 2rem;
+}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:3rem}
+.footer-logo{font-family:var(--serif);font-size:1.05rem;color:var(--white);display:flex;align-items:center;gap:0.55rem;margin-bottom:0.75rem}
+.footer-logo .logo-icon{background:var(--blue3)}
+.footer-p{font-size:0.78rem;line-height:1.75;color:rgba(255,255,255,0.3);max-width:240px}
+.footer-h{font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.1rem;font-weight:500}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.55rem}
+.footer-col ul a{font-size:0.78rem;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s;font-weight:300}
+.footer-col ul a:hover{color:var(--white)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem}
+.footer-copy{font-size:0.72rem;color:rgba(255,255,255,0.2)}
+.footer-reg{font-size:0.68rem;color:rgba(245,166,35,0.35);letter-spacing:0.04em}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero-left{padding:3.5rem 1.5rem}
+  .hero-right{display:none}
+  .stats-strip{grid-template-columns:1fr 1fr;padding:2rem 1.5rem}
+  .section{padding:4rem 1.5rem}
+  .features-grid,.courses-grid,.results-grid,.testi-grid{grid-template-columns:1fr}
+  .faculty-grid{grid-template-columns:1fr 1fr}
+  .steps-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .steps-grid::before{display:none}
+  .contact-wrap{grid-template-columns:1fr}
+  .contact-left,.contact-right{padding:3rem 1.5rem}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .site-footer{padding:2.5rem 1.5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo" onclick="showPage('home')">
+    <div class="logo-icon">YI</div>
+    Your Institute Name
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+    <li><a href="#" onclick="showPage('courses')" id="nav-courses">Courses</a></li>
+    <li><a href="#" onclick="showPage('results')" id="nav-results">Results</a></li>
+    <li><a href="#" onclick="showPage('faculty')" id="nav-faculty">Faculty</a></li>
+    <li><a href="#" onclick="showPage('admission')" id="nav-admission">Admission</a></li>
+    <li><a href="#" onclick="showPage('contact')" id="nav-contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="showPage('contact')">Enrol now</button>
+</nav>
+
+<!-- ═══════════ HOME ═══════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">Now enrolling for 2025–26 batch</div>
+      <h1 class="hero-title">
+        Building <em>brighter</em><br>
+        futures, one<br>
+        student at a <span>time.</span>
+      </h1>
+      <p class="hero-sub">Expert coaching for Classes 6–12, JEE, NEET, and competitive exams. Small batches, personalised attention, and a proven track record of results.</p>
+      <div class="btn-row">
+        <button class="btn-blue" onclick="showPage('contact')">Enrol for free demo</button>
+        <button class="btn-soft" onclick="showPage('courses')">Explore courses</button>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item"><div class="trust-dot"></div><div class="trust-text">5000+ students taught</div></div>
+        <div class="trust-item"><div class="trust-dot"></div><div class="trust-text">15 years of excellence</div></div>
+        <div class="trust-item"><div class="trust-dot"></div><div class="trust-text">95% pass rate</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hc-top">
+          <div class="hc-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+          <div><div class="hc-title">JEE / NEET Coaching</div><div class="hc-sub">Class 11 & 12 + Droppers</div></div>
+          <div class="hc-tag">Top rated</div>
+        </div>
+        <div class="hc-desc">Structured batches with daily practice, doubt sessions, and full test series.</div>
+      </div>
+      <div class="hero-card">
+        <div class="hc-top">
+          <div class="hc-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <div><div class="hc-title">School Tuitions (6–10)</div><div class="hc-sub">All subjects covered</div></div>
+          <div class="hc-tag">Most popular</div>
+        </div>
+        <div class="hc-desc">Concept-based learning aligned with CBSE, ICSE & state board syllabi.</div>
+      </div>
+      <div class="hero-card">
+        <div class="hc-top">
+          <div class="hc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <div><div class="hc-title">Crash Courses & Tests</div><div class="hc-sub">Board & competitive exam prep</div></div>
+          <div class="hc-tag">New</div>
+        </div>
+        <div class="hc-desc">Intensive revision, mock tests, and last-mile preparation for exams.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stat-box reveal scale-in reveal-delay-1"><div class="stat-n">5000<em>+</em></div><div class="stat-l">Students taught</div></div>
+    <div class="stat-box reveal scale-in reveal-delay-2"><div class="stat-n">15<em>yrs</em></div><div class="stat-l">Of trusted excellence</div></div>
+    <div class="stat-box reveal scale-in reveal-delay-3"><div class="stat-n">95<em>%</em></div><div class="stat-l">Board pass rate</div></div>
+    <div class="stat-box reveal scale-in reveal-delay-4"><div class="stat-n">200<em>+</em></div><div class="stat-l">Top rankers produced</div></div>
+  </div>
+
+  <!-- WHY US -->
+  <div class="section">
+    <div class="sec-header">
+      <div class="reveal from-left">
+        <div class="eyebrow">Why choose us</div>
+        <h2 class="section-title">The <em>difference</em> that makes the difference</h2>
+      </div>
+      <p class="section-sub reveal from-right">Every student who walks through our doors gets the attention, resources, and guidance they need to truly excel.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card reveal reveal-delay-1">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="feat-name">Small Batch Sizes</div>
+        <div class="feat-desc">Maximum 15–20 students per batch ensures every student gets individual attention and their doubts are heard.</div>
+      </div>
+      <div class="feat-card reveal reveal-delay-2">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <div class="feat-name">Expert Faculty</div>
+        <div class="feat-desc">All teachers hold post-graduate degrees with 5+ years of teaching experience and a passion for student success.</div>
+      </div>
+      <div class="feat-card reveal reveal-delay-3">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="feat-name">Regular Tests & Reports</div>
+        <div class="feat-desc">Weekly tests, monthly report cards, and parent-teacher meetings keep you fully informed of your child's progress.</div>
+      </div>
+      <div class="feat-card reveal reveal-delay-1">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="feat-name">Flexible Timings</div>
+        <div class="feat-desc">Morning, afternoon, and evening batches available to fit around school schedules and extracurriculars.</div>
+      </div>
+      <div class="feat-card reveal reveal-delay-2">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+        <div class="feat-name">Comprehensive Study Material</div>
+        <div class="feat-desc">Curated notes, practice sheets, past year papers, and online resources — everything in one place.</div>
+      </div>
+      <div class="feat-card reveal reveal-delay-3">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="feat-name">Doubt Clearing Sessions</div>
+        <div class="feat-desc">Dedicated doubt sessions every week, plus WhatsApp support for quick queries — no student is ever left behind.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><div class="logo-icon">YI</div>Your Institute Name</div>
+        <p class="footer-p">Empowering students across Classes 6–12 and competitive exams since [YEAR]. Trusted by 5000+ families.</p>
+      </div>
+      <div class="footer-col"><div class="footer-h">Quick links</div><ul><li><a href="#" onclick="showPage('courses')">Courses</a></li><li><a href="#" onclick="showPage('results')">Results</a></li><li><a href="#" onclick="showPage('faculty')">Faculty</a></li><li><a href="#" onclick="showPage('admission')">Admission</a></li></ul></div>
+      <div class="footer-col"><div class="footer-h">Courses</div><ul><li><a href="#">JEE / NEET</a></li><li><a href="#">Class 11–12</a></li><li><a href="#">Class 6–10</a></li><li><a href="#">Crash Course</a></li></ul></div>
+      <div class="footer-col"><div class="footer-h">Contact</div><ul><li><a href="#">[Your City], India</a></li><li><a href="#">+91 00000 00000</a></li><li><a href="#">hello@yourinstitute.in</a></li><li><a href="#">Mon–Sat, 8am–8pm</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Your Institute Name. All rights reserved.</span>
+      <span class="footer-reg">Reg. No. [XXXXXX] · Est. [YEAR]</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════ COURSES ═══════════ -->
+<div class="page" id="page-courses">
+  <div class="section">
+    <div class="sec-header">
+      <div class="reveal from-left">
+        <div class="eyebrow">What we offer</div>
+        <h2 class="section-title">Courses designed for <em>every learner</em></h2>
+      </div>
+      <p class="section-sub reveal from-right">From building strong basics in Class 6 to cracking JEE and NEET — we have the right course for every stage of your academic journey.</p>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card reveal reveal-delay-1">
+        <div class="course-top"><div class="course-label">Foundation</div><div class="course-name">Classes 6 – 8</div><div class="course-grade">Building strong basics</div><div class="course-tag">School board</div></div>
+        <div class="course-body">
+          <div class="course-subjects"><span class="subj">Maths</span><span class="subj">Science</span><span class="subj">English</span><span class="subj">Social Studies</span></div>
+          <div class="course-meta"><div class="course-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 days/week</div><div class="course-meta-item"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Max 15 students</div><div class="course-fee">₹[XXX]/mo</div></div>
+        </div>
+      </div>
+      <div class="course-card reveal reveal-delay-2">
+        <div class="course-top"><div class="course-label">Secondary</div><div class="course-name">Classes 9 – 10</div><div class="course-grade">Board exam preparation</div><div class="course-tag">CBSE / ICSE / State</div></div>
+        <div class="course-body">
+          <div class="course-subjects"><span class="subj">Maths</span><span class="subj">Science</span><span class="subj">English</span><span class="subj">SST</span><span class="subj">Hindi</span></div>
+          <div class="course-meta"><div class="course-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 days/week</div><div class="course-meta-item"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Max 15 students</div><div class="course-fee">₹[XXX]/mo</div></div>
+        </div>
+      </div>
+      <div class="course-card reveal reveal-delay-3">
+        <div class="course-top"><div class="course-label">Senior secondary</div><div class="course-name">Classes 11 – 12</div><div class="course-grade">Science & Commerce streams</div><div class="course-tag">Popular</div></div>
+        <div class="course-body">
+          <div class="course-subjects"><span class="subj">Physics</span><span class="subj">Chemistry</span><span class="subj">Maths</span><span class="subj">Biology</span><span class="subj">Accounts</span></div>
+          <div class="course-meta"><div class="course-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 days/week</div><div class="course-meta-item"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Max 20 students</div><div class="course-fee">₹[XXX]/mo</div></div>
+        </div>
+      </div>
+      <div class="course-card reveal reveal-delay-1">
+        <div class="course-top" style="background:var(--blue2)"><div class="course-label">Competitive</div><div class="course-name">JEE Main & Advanced</div><div class="course-grade">2-year & 1-year programs</div><div class="course-tag">Top rated</div></div>
+        <div class="course-body">
+          <div class="course-subjects"><span class="subj">Physics</span><span class="subj">Chemistry</span><span class="subj">Maths</span><span class="subj">Mock Tests</span></div>
+          <div class="course-meta"><div class="course-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Daily batches</div><div class="course-meta-item"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Max 20 students</div><div class="course-fee">₹[XXX]/mo</div></div>
+        </div>
+      </div>
+      <div class="course-card reveal reveal-delay-2">
+        <div class="course-top" style="background:var(--blue2)"><div class="course-label">Competitive</div><div class="course-name">NEET Coaching</div><div class="course-grade">Medical entrance preparation</div><div class="course-tag">In demand</div></div>
+        <div class="course-body">
+          <div class="course-subjects"><span class="subj">Physics</span><span class="subj">Chemistry</span><span class="subj">Biology</span><span class="subj">Mock Tests</span></div>
+          <div class="course-meta"><div class="course-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Daily batches</div><div class="course-meta-item"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Max 20 students</div><div class="course-fee">₹[XXX]/mo</div></div>
+        </div>
+      </div>
+      <div class="course-card reveal reveal-delay-3">
+        <div class="course-top" style="background:#2C3E6B"><div class="course-label">Short term</div><div class="course-name">Crash Course</div><div class="course-grade">Board & entrance exam prep</div><div class="course-tag">New batch</div></div>
+        <div class="course-body">
+          <div class="course-subjects"><span class="subj">All subjects</span><span class="subj">Mock Tests</span><span class="subj">Revision</span></div>
+          <div class="course-meta"><div class="course-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>45–60 days</div><div class="course-meta-item"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Max 25 students</div><div class="course-fee">₹[XXX] flat</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fee-table-wrap reveal">
+      <div class="fee-table-title">Complete <em>fee structure</em></div>
+      <table class="fee-table">
+        <thead><tr><th>Course</th><th>Duration</th><th>Monthly Fee</th><th>Admission Fee</th><th>Study Material</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Foundation (Class 6–8)</td><td>Academic year</td><td>₹[XXX]</td><td>₹[XXX]</td><td>Included</td><td><span class="fee-badge new">Open</span></td></tr>
+          <tr><td>Secondary (Class 9–10)</td><td>Academic year</td><td>₹[XXX]</td><td>₹[XXX]</td><td>Included</td><td><span class="fee-badge new">Open</span></td></tr>
+          <tr><td>Senior Secondary (Class 11–12)</td><td>Academic year</td><td>₹[XXX]</td><td>₹[XXX]</td><td>Included</td><td><span class="fee-badge popular">Filling fast</span></td></tr>
+          <tr><td>JEE Main & Advanced</td><td>1 or 2 years</td><td>₹[XXX]</td><td>₹[XXX]</td><td>Included</td><td><span class="fee-badge popular">Filling fast</span></td></tr>
+          <tr><td>NEET Coaching</td><td>1 or 2 years</td><td>₹[XXX]</td><td>₹[XXX]</td><td>Included</td><td><span class="fee-badge new">Open</span></td></tr>
+          <tr><td>Crash Course</td><td>45–60 days</td><td>—</td><td>₹[XXX] flat</td><td>Included</td><td><span class="fee-badge new">Open</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <footer class="site-footer"><div class="footer-bottom"><span class="footer-copy">© 2025 Your Institute Name. All rights reserved.</span><span class="footer-reg">Enrol today — limited seats available</span></div></footer>
+</div>
+
+<!-- ═══════════ RESULTS ═══════════ -->
+<div class="page" id="page-results">
+  <div class="section">
+    <div class="sec-header">
+      <div class="reveal from-left">
+        <div class="eyebrow">Our track record</div>
+        <h2 class="section-title">Results that speak <em>for themselves</em></h2>
+      </div>
+      <p class="section-sub reveal from-right">Hundreds of students have gone on to prestigious colleges and careers — this is what happens when great teaching meets great students.</p>
+    </div>
+    <div class="results-grid">
+      <div class="result-card reveal reveal-delay-1"><div class="result-rank">AIR <em>42</em></div><div class="result-exam">JEE Advanced 2024</div><div class="result-name">[Student Name]</div><div class="result-batch">Batch 2022–24</div></div>
+      <div class="result-card reveal reveal-delay-2"><div class="result-rank">AIR <em>87</em></div><div class="result-exam">NEET 2024</div><div class="result-name">[Student Name]</div><div class="result-batch">Batch 2022–24</div></div>
+      <div class="result-card reveal reveal-delay-3"><div class="result-rank"><em>99</em>%</div><div class="result-exam">CBSE Class 12 · 2024</div><div class="result-name">[Student Name]</div><div class="result-batch">Batch 2023–24</div></div>
+      <div class="result-card reveal reveal-delay-1"><div class="result-rank">AIR <em>156</em></div><div class="result-exam">JEE Main 2024</div><div class="result-name">[Student Name]</div><div class="result-batch">Batch 2022–24</div></div>
+      <div class="result-card reveal reveal-delay-2"><div class="result-rank"><em>98</em>%</div><div class="result-exam">CBSE Class 10 · 2024</div><div class="result-name">[Student Name]</div><div class="result-batch">Batch 2023–24</div></div>
+      <div class="result-card reveal reveal-delay-3"><div class="result-rank">AIR <em>210</em></div><div class="result-exam">NEET 2024</div><div class="result-name">[Student Name]</div><div class="result-batch">Batch 2022–24</div></div>
+    </div>
+  </div>
+  <div class="section section-alt">
+    <div class="sec-header">
+      <div class="reveal"><div class="eyebrow">Student voices</div><h2 class="section-title">What our <em>students say</em></h2></div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi reveal reveal-delay-1"><div class="testi-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testi-text">"The teachers here genuinely care. My Physics teacher stayed back after class every time I had doubts. I cracked JEE Main with AIR 156 — couldn't have done it without this team."</p><div class="testi-author"><div class="testi-av">A</div><div><div class="testi-name">[Student Name]</div><div class="testi-role">JEE Main 2024 · AIR 156</div></div></div></div>
+      <div class="testi reveal reveal-delay-2"><div class="testi-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testi-text">"My daughter went from struggling in Class 9 to scoring 95% in boards. The small batch size means her doubts are never ignored. Best decision we made as parents."</p><div class="testi-author"><div class="testi-av">P</div><div><div class="testi-name">[Parent Name]</div><div class="testi-role">Parent · Class 10 student</div></div></div></div>
+      <div class="testi reveal reveal-delay-3"><div class="testi-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="testi-text">"The study material and weekly tests kept me on track all year. By the time NEET came, I felt fully prepared. Scored 650+ and got into my dream medical college."</p><div class="testi-author"><div class="testi-av">S</div><div><div class="testi-name">[Student Name]</div><div class="testi-role">NEET 2024 · 650+ score</div></div></div></div>
+    </div>
+  </div>
+  <footer class="site-footer"><div class="footer-bottom"><span class="footer-copy">© 2025 Your Institute Name. All rights reserved.</span><span class="footer-reg">Results updated for 2024 batch</span></div></footer>
+</div>
+
+<!-- ═══════════ FACULTY ═══════════ -->
+<div class="page" id="page-faculty">
+  <div class="section">
+    <div class="sec-header">
+      <div class="reveal from-left"><div class="eyebrow">Our educators</div><h2 class="section-title">Meet the <em>minds</em> behind your success</h2></div>
+      <p class="section-sub reveal from-right">Every teacher at our institute is carefully selected — not just for their subject expertise, but for their passion for teaching and commitment to every student.</p>
+    </div>
+    <div class="faculty-grid">
+      <div class="faculty-card reveal reveal-delay-1"><div class="faculty-top"><div class="faculty-av">A</div><div class="faculty-name">[Teacher Name]</div><div class="faculty-subject">Mathematics</div></div><div class="faculty-body"><div class="faculty-exp">12 years experience</div><div class="faculty-desc">Specialises in making complex concepts simple. Known for high-energy, example-driven classes.</div><div class="faculty-qual">M.Sc Mathematics</div></div></div>
+      <div class="faculty-card reveal reveal-delay-2"><div class="faculty-top"><div class="faculty-av">S</div><div class="faculty-name">[Teacher Name]</div><div class="faculty-subject">Physics</div></div><div class="faculty-body"><div class="faculty-exp">10 years experience</div><div class="faculty-desc">IIT-trained physicist with a knack for connecting theory to real-world applications.</div><div class="faculty-qual">M.Tech, IIT [City]</div></div></div>
+      <div class="faculty-card reveal reveal-delay-3"><div class="faculty-top"><div class="faculty-av">P</div><div class="faculty-name">[Teacher Name]</div><div class="faculty-subject">Chemistry</div></div><div class="faculty-body"><div class="faculty-exp">8 years experience</div><div class="faculty-desc">Organic & inorganic chemistry expert with proven NEET result track record.</div><div class="faculty-qual">M.Sc Chemistry</div></div></div>
+      <div class="faculty-card reveal reveal-delay-4"><div class="faculty-top"><div class="faculty-av">R</div><div class="faculty-name">[Teacher Name]</div><div class="faculty-subject">Biology</div></div><div class="faculty-body"><div class="faculty-exp">9 years experience</div><div class="faculty-desc">NEET specialist with a visual, diagram-based teaching style loved by students.</div><div class="faculty-qual">M.Sc Biology</div></div></div>
+      <div class="faculty-card reveal reveal-delay-1"><div class="faculty-top"><div class="faculty-av">N</div><div class="faculty-name">[Teacher Name]</div><div class="faculty-subject">English & SST</div></div><div class="faculty-body"><div class="faculty-exp">7 years experience</div><div class="faculty-desc">Board exam specialist with a structured approach to essay writing and comprehension.</div><div class="faculty-qual">M.A English</div></div></div>
+      <div class="faculty-card reveal reveal-delay-2"><div class="faculty-top"><div class="faculty-av">K</div><div class="faculty-name">[Teacher Name]</div><div class="faculty-subject">Accountancy & Business</div></div><div class="faculty-body"><div class="faculty-exp">6 years experience</div><div class="faculty-desc">Commerce stream expert helping Class 11–12 students ace accounts and economics.</div><div class="faculty-qual">M.Com, CA Inter</div></div></div>
+      <div class="faculty-card reveal reveal-delay-3"><div class="faculty-top"><div class="faculty-av">V</div><div class="faculty-name">[Teacher Name]</div><div class="faculty-subject">Hindi & Sanskrit</div></div><div class="faculty-body"><div class="faculty-exp">11 years experience</div><div class="faculty-desc">Makes language subjects scoring with a focus on grammar, essays, and literature.</div><div class="faculty-qual">M.A Hindi</div></div></div>
+      <div class="faculty-card reveal reveal-delay-4"><div class="faculty-top"><div class="faculty-av">M</div><div class="faculty-name">[Teacher Name]</div><div class="faculty-subject">Computer Science</div></div><div class="faculty-body"><div class="faculty-exp">5 years experience</div><div class="faculty-desc">Practical, hands-on CS teacher covering CBSE curriculum and programming fundamentals.</div><div class="faculty-qual">B.Tech, MCA</div></div></div>
+    </div>
+  </div>
+  <footer class="site-footer"><div class="footer-bottom"><span class="footer-copy">© 2025 Your Institute Name. All rights reserved.</span><span class="footer-reg">All faculty are full-time, dedicated educators</span></div></footer>
+</div>
+
+<!-- ═══════════ ADMISSION ═══════════ -->
+<div class="page" id="page-admission">
+  <div class="section">
+    <div class="sec-header">
+      <div class="reveal from-left"><div class="eyebrow">Getting started</div><h2 class="section-title">Join us in <em>4 simple steps</em></h2></div>
+      <p class="section-sub reveal from-right">Admission is straightforward and stress-free. A free demo class is included so your child can experience the teaching style before committing.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-item reveal reveal-delay-1"><div class="step-dot">1</div><div class="step-name">Enquire & Register</div><div class="step-desc">Call, WhatsApp, or fill the online form. Tell us the class and subjects needed.</div></div>
+      <div class="step-item reveal reveal-delay-2"><div class="step-dot">2</div><div class="step-name">Free Demo Class</div><div class="step-desc">Attend a free 1-hour demo session in your chosen subject before deciding.</div></div>
+      <div class="step-item reveal reveal-delay-3"><div class="step-dot">3</div><div class="step-name">Enrol & Pay</div><div class="step-desc">Choose your batch timing, pay the admission fee, and receive your schedule.</div></div>
+      <div class="step-item reveal reveal-delay-4"><div class="step-dot">4</div><div class="step-name">Start Learning!</div><div class="step-desc">Collect your study material and begin your journey toward top results.</div></div>
+    </div>
+  </div>
+  <div class="section section-alt">
+    <div class="sec-header">
+      <div class="reveal"><div class="eyebrow">Common questions</div><h2 class="section-title">Frequently asked <em>questions</em></h2></div>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the batch size? <span class="faq-arrow">+</span></div><div class="faq-a">We keep batches small — a maximum of 15–20 students for school classes and up to 20–25 for competitive exam batches. This ensures every student gets personal attention.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is a free demo class available? <span class="faq-arrow">+</span></div><div class="faq-a">Yes! Every new student is welcome to attend a free 1-hour demo class in any subject before enrolling. We want you to feel confident before you commit.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you offer online classes? <span class="faq-arrow">+</span></div><div class="faq-a">Yes, we offer both in-person and live online classes via Google Meet / Zoom. Study material is shared digitally for online students.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What boards do you cover? <span class="faq-arrow">+</span></div><div class="faq-a">We cover CBSE, ICSE, and major state boards. Please mention your board at the time of enquiry so we can assign the right faculty and material.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Are there any scholarships or fee concessions? <span class="faq-arrow">+</span></div><div class="faq-a">Yes — we offer merit-based scholarships for high-performing students and sibling discounts. Ask our counsellor for details during your enquiry call.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How are parents kept informed? <span class="faq-arrow">+</span></div><div class="faq-a">Monthly report cards, WhatsApp group updates, and parent-teacher meetings every quarter ensure you're always up to date on your child's progress.</div></div>
+    </div>
+  </div>
+  <footer class="site-footer"><div class="footer-bottom"><span class="footer-copy">© 2025 Your Institute Name. All rights reserved.</span><span class="footer-reg">Limited seats — enrol early to avoid disappointment</span></div></footer>
+</div>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<div class="page" id="page-contact">
+  <div class="contact-wrap">
+    <div class="contact-left">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Let's find the right course for your <em>child.</em></h2>
+      <p>Fill the form or reach us directly — our counsellors are available to answer all your questions and help you pick the right batch.</p>
+      <div class="c-cards">
+        <div class="c-card"><div class="c-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg></div><div><div class="c-label">Phone / WhatsApp</div><div class="c-val">+91 00000 00000</div></div></div>
+        <div class="c-card"><div class="c-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="c-label">Email</div><div class="c-val">hello@yourinstitute.in</div></div></div>
+        <div class="c-card"><div class="c-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="c-label">Address</div><div class="c-val">[Your Address, City]</div></div></div>
+        <div class="c-card"><div class="c-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div><div><div class="c-label">Office hours</div><div class="c-val">Mon – Sat, 8am – 8pm</div></div></div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="form-title">Book a free demo class</div>
+      <div class="form-sub">No obligation — just come and experience the teaching before you decide.</div>
+      <div class="form-row">
+        <div class="form-group"><label>Student's name</label><input type="text" placeholder="Full name"/></div>
+        <div class="form-group"><label>Parent's phone</label><input type="tel" placeholder="+91 00000 00000"/></div>
+      </div>
+      <div class="form-group"><label>Email</label><input type="email" placeholder="you@example.com"/></div>
+      <div class="form-row">
+        <div class="form-group"><label>Class / Grade</label><select><option value="">Select class</option><option>Class 6</option><option>Class 7</option><option>Class 8</option><option>Class 9</option><option>Class 10</option><option>Class 11 – Science</option><option>Class 11 – Commerce</option><option>Class 12 – Science</option><option>Class 12 – Commerce</option><option>JEE Coaching</option><option>NEET Coaching</option><option>Crash Course</option></select></div>
+        <div class="form-group"><label>Subject needed</label><select><option value="">Select subject</option><option>Mathematics</option><option>Physics</option><option>Chemistry</option><option>Biology</option><option>English</option><option>Social Studies</option><option>Accountancy</option><option>All subjects</option></select></div>
+      </div>
+      <div class="form-group"><label>Preferred batch time</label><select><option>Morning (7am – 10am)</option><option>Afternoon (12pm – 3pm)</option><option>Evening (5pm – 8pm)</option><option>Any time works</option></select></div>
+      <div class="form-group"><label>Any questions or notes</label><textarea placeholder="E.g. which board, specific weak areas, online vs in-person…"></textarea></div>
+      <button class="btn-submit" onclick="this.textContent='Done! We\'ll call you within 24 hours to schedule your demo 🎓'">Book free demo class</button>
+      <div class="form-note">100% free · No commitment · Seats limited per batch</div>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div><div class="footer-logo"><div class="logo-icon">YI</div>Your Institute Name</div><p class="footer-p">Empowering students since [YEAR]. Trusted by 5000+ families across [City].</p></div>
+      <div class="footer-col"><div class="footer-h">Pages</div><ul><li><a href="#" onclick="showPage('courses')">Courses</a></li><li><a href="#" onclick="showPage('results')">Results</a></li><li><a href="#" onclick="showPage('faculty')">Faculty</a></li><li><a href="#" onclick="showPage('admission')">Admission</a></li></ul></div>
+      <div class="footer-col"><div class="footer-h">Courses</div><ul><li><a href="#">Class 6–8</a></li><li><a href="#">Class 9–10</a></li><li><a href="#">Class 11–12</a></li><li><a href="#">JEE / NEET</a></li><li><a href="#">Crash Course</a></li></ul></div>
+      <div class="footer-col"><div class="footer-h">Contact</div><ul><li><a href="#">[Your City], India</a></li><li><a href="#">+91 00000 00000</a></li><li><a href="#">hello@yourinstitute.in</a></li><li><a href="#">Mon–Sat, 8am–8pm</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span class="footer-copy">© 2025 Your Institute Name. All rights reserved.</span><span class="footer-reg">Reg. No. [XXXXXX] · Est. [YEAR]</span></div>
+  </footer>
+</div>
+
+<script>
+/* PAGE NAVIGATION */
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.getElementById('nav-'+name).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  initReveal();
+  return false;
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+
+/* SCROLL REVEAL */
+function initReveal(){
+  const els=document.querySelectorAll('.page.active .reveal');
+  els.forEach(el=>el.classList.remove('visible'));
+  setTimeout(()=>checkReveal(),100);
+}
+function checkReveal(){
+  const els=document.querySelectorAll('.page.active .reveal');
+  els.forEach(el=>{
+    const rect=el.getBoundingClientRect();
+    if(rect.top<window.innerHeight-60){
+      el.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll',checkReveal,{passive:true});
+window.addEventListener('load',()=>{initReveal();checkReveal()});
+
+/* FAQ ACCORDION */
+function toggleFaq(el){
+  const ans=el.nextElementSibling;
+  const isOpen=ans.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(q=>q.classList.remove('open'));
+  if(!isOpen){ans.classList.add('open');el.classList.add('open')}
+}
+</script>
+</body>
+</html>
